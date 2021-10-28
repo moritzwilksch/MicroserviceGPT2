@@ -7,3 +7,9 @@ curl:
 
 start-application:
 	uvicorn main:app --host 0.0.0.0 --port 1205
+
+docker-build:
+	docker build -t microservicegpt2 .
+
+docker-run:
+	docker run --name gpt2_ms -d -p 1205:1205 microservicegpt2

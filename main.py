@@ -10,9 +10,10 @@ from pydantic import BaseModel
 
 class InputBody(BaseModel):
     input_str: str
+    max_len: int = 30
 
 @app.post("/")
 def read_root(input_body: InputBody):
     input_str = input_body.input_str
 
-    return generator(input_str, max_length=30, num_return_sequences=1)[0]
+    return generator(input_str, max_length=input_body.max_len, num_return_sequences=1)[0]
